@@ -1,0 +1,23 @@
+MAIL FROM:<test@cs.unc.edu>
+MAIL    FROM:<test@cs.unc.edu>
+MAIL FROM:   <test@cs.unc.edu>
+XMAIL FROM:<test@cs.unc.edu>
+Mail From:<test@cs.unc.edu>
+MAILFROM:<test@cs.unc.edu>
+MAIL-FROM:<test@cs.unc.edu>
+MAIL FROM: !test@cs.unc.edu>
+MAIL FROM: <1est@cs.unc.edu>
+MAIL FROM: <!est@cs.unc.edu>
+MAIL FROM: <test!cs.unc.edu>
+MAIL FROM: <test@!cs.unc.edu>
+MAIL FROM: <test@cs!unc.edu>
+MAIL FROM: <test@cs..unc.edu>
+MAIL FROM: <test@cs.unc.edu!
+MAIL FROM: < test@cs.unc.edu>
+MAIL FROM: <test @cs.unc.edu>
+MAIL FROM: <test@ cs.unc.edu>
+MAIL FROM: <test@cs .unc.edu>
+MAIL FROM: <test@cs. unc.edu>
+MAIL FROM: <test@cs.unc .edu>
+MAIL FROM: <test@cs.unc.edu >
+MAIL FROM: <test@cs.unc.edu>
