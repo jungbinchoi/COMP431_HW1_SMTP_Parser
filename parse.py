@@ -71,11 +71,11 @@ def mail_from_cmd():
 
     if not reverse_path():
         return False
+    index += 1
+    value = string[index]
 
     if not nullspace():
         return False
-    index += 1
-    value = string[index]
 
     if not CRLF():
         return False
@@ -117,7 +117,7 @@ def space():
 def nullspace():
     global value, error
     if not whitespace():
-        if null():
+        if not null():
             error = ''
             return True
         return False
@@ -130,7 +130,7 @@ def nullspace():
 """
 def null():
     global value
-    return value != ''
+    return value == ''
 
 
 """
