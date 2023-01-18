@@ -22,20 +22,22 @@ LOWER_Z_ASCII = 122
 
 
 def main():
-    global value, error, string, index
+    global string, value, index, error
     while True:
-        try:
+        try: 
             error = ''
             index = 0
+
             string = sys.stdin.readline()
             sys.stdout.write(string)
 
             value = string[index]
+
             if not mail_from_cmd():
                 print("ERROR -- " + error)
             else:
                 print("Sender ok")
-
+        
         except (EOFError, IndexError):
             break
 
@@ -48,7 +50,7 @@ def main():
     * Generates Error
 """
 def mail_from_cmd():
-    global value, index, error, string
+    global value, string, index, error
     for char in "MAIL":
         if char != value:
             error = "mail-from-cmd"
@@ -98,7 +100,7 @@ def whitespace():
     value = string[index]
 
     if not whitespace():
-        error = ""
+        error = ''
 
     return True
 
@@ -121,7 +123,7 @@ def nullspace():
             error = ''
             return True
         return False
-
+    
     return True
 
 
@@ -134,7 +136,7 @@ def null():
 
 
 """
-    Checks if the reverse path is a valid path
+    Checks if the reverse path is valid path
 """
 def reverse_path():
     return path()
@@ -146,7 +148,7 @@ def reverse_path():
     * Generates Error
 """
 def path():
-    global value, error, index, string
+    global string, index, value, error
     if value != '<':
         if error == '':
             error = "path"
@@ -171,14 +173,15 @@ def path():
     * Generates Error
 """
 def mailbox():
-    global value, string, index, error
+    global string, index, value, error
     if not local_part():
         if error == '':
             error = "mailbox"
         return False
-
+    
     if value != '@':
-        error = "mailbox"
+        if error == '':
+            error = "mailbox"
         return False
     index += 1
     value = string[index]
@@ -187,12 +190,12 @@ def mailbox():
         if error == '':
             error = "mailbox"
         return False
-
+    
     return True
 
 
 """
-    Checks is the local part is a string
+    Checks if the local part is a string
 """
 def local_part():
     return string_func()
@@ -219,7 +222,7 @@ def string_func():
 
 
 """
-    Checks if the current value is a regular character i.e. not a special character or a space/tab
+    Checks if the current value is a regular character i.e. not a spaceial char or space/tab
 """
 def char():
     return not (space() or special())
@@ -229,31 +232,29 @@ def char():
     Checks for the domain name
 """
 def domain():
-    global value, index, string
+    global string, index, value
     if not element():
         return False
-
+    
     if value == '.':
         index += 1
         value = string[index]
         return domain()
-
+    
     return True
 
 
 """
-    Checks if the element is a single character or is a name
+    Checks if the element is a single character of is a name
 
     * Generates Error
 """
 def element():
-    global value, error
+    global value, string, index, error
     if not name():
-        if not letter():
-            if error == '':
-                error = "element"
-            return False
-        return True
+        if error == '':
+            error = "element"
+        return False
 
     return True
 
@@ -268,13 +269,13 @@ def name():
     index += 1
     value = string[index]
 
-    if not let_dig_str():
-        return False
+    let_dig_str()
 
-    return True
+    return True 
+
 
 """
-    Checks if the character is a letter using the character's ASCII value
+    Checks if the character is a letter using the character's ASCII
 """
 def letter():
     global value
@@ -284,7 +285,7 @@ def letter():
 
 
 """
-    Checks if the given string is a letter, digit, or a string
+    Checks if the given string is a letter, digit or a string
 """
 def let_dig_str():
     global value, string, index
@@ -306,7 +307,7 @@ def let_dig():
 
 
 """
-    Checks if the character is a decimal digit using the character's ASCII value
+    Checks if the character is decimal digit
 """
 def digit():
     global value
@@ -316,9 +317,7 @@ def digit():
 
 
 """
-    Checks if the character is a newline (\n)
-
-    * Generates Error
+    Checks if the character is a newline
 """
 def CRLF():
     global value, error
@@ -331,7 +330,7 @@ def CRLF():
 
 
 """
-    Checks if the character is a special charcter
+    Checks if the character is a special character
 """
 def special():
     global value
